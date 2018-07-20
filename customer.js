@@ -31,7 +31,7 @@ function askForStuff(stuff){
         {
             type: 'input',
             name: 'choice',
-            message: 'What ID do you want?'
+            message: 'Input the ID of the product you want.'
         }
     ]).then(function(res){
         var id = parseInt(res.choice);
@@ -40,7 +40,7 @@ function askForStuff(stuff){
         if(item){
             howMuch(item);
         }else{
-            console.log('we no got');
+            console.log('We are out of stock for that item.');
             displayStuff();
         }
     });
@@ -58,13 +58,13 @@ function howMuch(item){
         {
             type: 'input',
             name: 'quantity',
-            message: 'How much?'
+            message: 'How many will you be purchasing?'
         }
     ]).then(function(res){
         var ammount = parseInt(res.quantity);
 
         if (ammount > item.stock_quantity){
-            console.log('we not got enough');
+            console.log('We arent carrying that much of that product at the moment.');
             displayStuff();
         } else {
             transaction(item, ammount)
